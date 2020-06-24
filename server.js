@@ -43,7 +43,7 @@ mongo
       });
 
       passport.deserializeUser((id, done) => {
-          db.collection('socialusers').findOne(
+          client.db('test').collection('socialusers').findOne(
               {id: id},
               (err, doc) => {
                   done(null, doc);
