@@ -57,6 +57,17 @@ mongo
       *  ADD YOUR CODE BELOW
       */
     
+    passport.use(new GitHubStrategy({
+      clientID: process.env.GITHUB_CLIENT_ID,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET,
+      callbackURL: 'https://tame-plum-play.glitch.me/auth/github/callback'
+    },
+      function(accessToken, refreshToken, profile, cb) {
+        console.log(profile);
+        //Database logic here with callback containing our user object
+      }
+    ));
+
       app.route('/auth/github')
         .get(passport.authenticate('github'));
         
